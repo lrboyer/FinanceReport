@@ -20,23 +20,15 @@ function FileUpload() {
   const handleUpload = async () => {
     if (file && pass) {
 
-      try {
-      const response = await axios.post('YOUR_API_ENDPOINT', pass);
-        
-      console.log('Upload successful:', response.data);
-      } catch (error) {
-        console.error('Error uploading file:', error);
-      }
-
-
     try {
       const formData = new FormData();
       formData.append('file', file);
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const response = await axios.put('YOUR_API_ENDPOINT', formData, {
+      const response = await axios.put('https://twt87y3iyj.execute-api.us-east-1.amazonaws.com/staging', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          'AuthId': pass
         },
       });
 
