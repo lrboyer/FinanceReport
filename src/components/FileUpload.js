@@ -25,7 +25,7 @@ function FileUpload() {
       formData.append('file', file);
 
       // Replace 'YOUR_API_ENDPOINT' with your actual API endpoint
-      const response = await axios.put('https://twt87y3iyj.execute-api.us-east-1.amazonaws.com/staging', formData, {
+      const response = await axios.post('https://twt87y3iyj.execute-api.us-east-1.amazonaws.com/staging', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           'AuthId': pass
