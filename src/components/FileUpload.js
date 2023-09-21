@@ -26,15 +26,34 @@ function FileUpload() {
             "fileType": "application/csv"
           }
 
-          const response = await axios.post('https://ruyyma5fqk.execute-api.us-east-1.amazonaws.com/staging', body, {
+          const urlResponse = await axios.post('https://ruyyma5fqk.execute-api.us-east-1.amazonaws.com/staging', body, {
             headers: {
               'Content-Type': 'application/json',
               'x-api-key': 'N017qwyGaI2I5LkUOtQcn2QsDqbQAOY04PFRji7V'
             }
           });
 
+          // Extract the pre-signed URL from the API response
+          const s3UploadUrl = urlResponse.data.url;
+
+          // Step 2: Use the pre-signed URL to upload the file directly to S3
+          const formData = new FormData();
+          formData.append('file', file);
+
+          const uploadResponse = await axios.put(s3UploadUrl, formData, {
+            headers: {
+              'Content-Type': file.type,
+              'x-api-key': 'N017qwyGaI2I5LkUOtQcn2QsDqbQAOY04PFRji7V'
+            },
+          });
+
+          // Handle the response from the S3 upload
+          console.log('File upload response:', uploadResponse.data);
+
+
+
           // Handle the response from the API here
-          console.log('Upload successful:', response.data);
+          console.log('Upload successful:', urlResponse.data);
         } catch (error) {
           console.error('Error uploading file:', error);
         }
