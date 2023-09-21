@@ -26,7 +26,7 @@ function FileUpload() {
             "fileType": "application/csv"
           }
 
-          const response = await axios.post('https://twt87y3iyj.execute-api.us-east-1.amazonaws.com/staging', body, {
+          const response = await axios.post('https://ruyyma5fqk.execute-api.us-east-1.amazonaws.com/staging', body, {
             headers: {
               'Content-Type': 'application/json',
               'x-api-key': 'N017qwyGaI2I5LkUOtQcn2QsDqbQAOY04PFRji7V'
