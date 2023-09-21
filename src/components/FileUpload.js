@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function FileUpload() {
-  const auth_id = "bruh12345"
   const [file, setFile] = useState(null);
   const [pass, setPass] = useState("");
 
@@ -28,7 +27,7 @@ function FileUpload() {
             'Content-Type': 'multipart/form-data'
           },
           params: {
-            authId: auth_id,
+            authId: pass,
           },
         });
 
